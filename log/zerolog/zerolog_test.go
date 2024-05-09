@@ -1,7 +1,7 @@
 package zerolog_test
 
 import (
-	"github.com/l1ghtd/go-demo/log/zerolog"
+	"github.com/ra1n6ow/go-demo/log/zerolog"
 	"testing"
 )
 

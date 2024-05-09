@@ -6,9 +6,9 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/l1ghtd/go-demo/swagger/api"
+	"github.com/ra1n6ow/go-demo/swagger/api"
 	// This line is necessary for go-swagger to find your docs!
-	_ "github.com/l1ghtd/go-demo/swagger/docs"
+	_ "github.com/ra1n6ow/go-demo/swagger/docs"
 )
 
 var users []*api.User

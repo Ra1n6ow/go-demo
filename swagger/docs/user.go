@@ -1,7 +1,7 @@
 package docs
 
 import (
-	"github.com/l1ghtd/go-demo/swagger/api"
+	"github.com/ra1n6ow/go-demo/swagger/api"
 )
 
 // swagger:route POST /users user createUserRequest

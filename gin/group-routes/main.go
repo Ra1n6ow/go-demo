@@ -1,6 +1,6 @@
 package main
 
-import "github.com/l1ghtd/go-demo/gin/group-routes/routes"
+import "github.com/ra1n6ow/go-demo/gin/group-routes/routes"
 
 func main() {
 	// Our server will live in the routes package

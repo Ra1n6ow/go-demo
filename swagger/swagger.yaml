@@ -25,7 +25,7 @@ definitions:
             - nickname
         title: User represents body of User request and response.
         type: object
-        x-go-package: github.com/l1ghtd/gopractise-demo/swagger/api
+        x-go-package: github.com/ra1n6ow/gopractise-demo/swagger/api
 host: some-url.com
 info:
     description: Documentation of our awesome API.
