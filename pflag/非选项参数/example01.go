@@ -17,5 +17,10 @@ func main() {
 	fmt.Printf("argument list is: %v\n", pflag.Args())
 	fmt.Printf("the first argument is: %v\n", pflag.Arg(0))
 
+	v, err := pflag.CommandLine.GetInt("flagname")
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(v)
 	fmt.Println(*flagvar)
 }
