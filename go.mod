@@ -5,11 +5,13 @@ go 1.22.1
 require (
 	github.com/brianvoe/gofakeit/v7 v7.0.2
 	github.com/dlclark/regexp2 v1.11.0
+	github.com/fatih/color v1.13.0
 	github.com/fsnotify/fsnotify v1.7.0
 	github.com/gin-contrib/cors v1.7.1
 	github.com/gin-gonic/gin v1.9.1
 	github.com/marmotedu/errors v1.0.2
 	github.com/marmotedu/sample-code v1.0.0
+	github.com/mdobak/go-xerrors v0.3.1
 	github.com/mitchellh/go-homedir v1.1.0
 	github.com/redis/go-redis/v9 v9.5.1
 	github.com/rs/zerolog v1.32.0
