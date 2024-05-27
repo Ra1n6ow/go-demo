@@ -1,0 +1,4 @@
+2024-05-27T16:35:50.529+0800	DEBUG	customLogger/main.go:44	Trying to hit GET request for www.google.com
+2024-05-27T16:35:50.531+0800	ERROR	customLogger/main.go:47	Error fetching URL www.google.com : Error = Get "www.google.com": unsupported protocol scheme ""
+2024-05-27T16:35:50.531+0800	DEBUG	customLogger/main.go:44	Trying to hit GET request for http://www.google.com
+2024-05-27T16:35:50.729+0800	INFO	customLogger/main.go:49	Success! statusCode = 200 OK for URL http://www.google.com

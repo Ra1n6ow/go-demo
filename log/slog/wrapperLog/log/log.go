@@ -1,8 +1,8 @@
 package log
 
 import (
+	"context"
 	"log/slog"
-	"os"
 	"sync"
 )
 
@@ -23,6 +23,8 @@ type Logger interface {
 	Info(msg string, keysAndValues ...interface{})
 	Warn(msg string, keysAndValues ...interface{})
 	Error(msg string, keysAndValues ...interface{})
+	Panic(msg string, keysAndValues ...interface{})
+	Fatal(msg string, keysAndValues ...interface{})
 }
 
 // Init 使用指定的选项初始化 Logger.
@@ -34,13 +36,23 @@ func Init(opts *Options) {
 }
 
 func NewLogger(opts *Options) *sLogger {
-	hdOpts := &slog.HandlerOptions{
-		AddSource: opts.AddSource, // 日志输出源
-		Level:     opts.Level,
-	}
-	handler := slog.NewJSONHandler(os.Stdout, hdOpts)
-	logger := slog.New(handler)
-	return &sLogger{logger}
+
+	//hops := &slog.HandlerOptions{
+	//	Level:       opts.Level,
+	//	AddSource:   opts.AddSource,
+	//	ReplaceAttr: levelReplaceAttr,
+	//}
+	//h := slog.NewJSONHandler(os.Stdout, hops)
+	h := NewHandler(&slog.HandlerOptions{
+		Level:       opts.Level,
+		AddSource:   opts.AddSource,
+		ReplaceAttr: nil,
+	})
+
+	s := slog.New(h)
+
+	logger := &sLogger{s}
+	return logger
 }
 
 func Debug(msg string, keysAndValues ...interface{}) {
@@ -73,4 +85,20 @@ func Error(msg string, keysAndValues ...interface{}) {
 
 func (l *sLogger) Error(msg string, keysAndValues ...interface{}) {
 	l.s.Error(msg, keysAndValues...)
+}
+
+func Panic(msg string, keysAndValues ...interface{}) {
+	std.s.Log(context.Background(), LevelPanic, msg, keysAndValues...)
+}
+
+func (l *sLogger) Panic(msg string, keysAndValues ...interface{}) {
+	l.s.Log(context.Background(), LevelPanic, msg, keysAndValues...)
+}
+
+func Fatal(msg string, keysAndValues ...interface{}) {
+	std.s.Log(context.Background(), LevelFatal, msg, keysAndValues...)
+}
+
+func (l *sLogger) Fatal(msg string, keysAndValues ...interface{}) {
+	l.s.Log(context.Background(), LevelFatal, msg, keysAndValues...)
 }
