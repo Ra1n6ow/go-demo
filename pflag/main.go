@@ -12,8 +12,7 @@ const helpText = `Usage: main [flags] arg [arg...]
 
 This is a pflag example.
 
-Flags:
-`
+Flags:`
 
 // 定义命令行参数，并将标志的值存储在指针中.
 var (
