@@ -3,11 +3,11 @@ package main
 import (
 	"fmt"
 
+	"github.com/ra1n6ow/go-demo/SQL/gorm/relations"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
-
-	"github.com/ra1n6ow/go-demo/SQL/gorm/advanced"
+	"gorm.io/gorm/schema"
 )
 
 func main() {
@@ -20,6 +20,9 @@ func main() {
 		"UTC")
 
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{
+		NamingStrategy: schema.NamingStrategy{
+			SingularTable: true,
+		},
 		Logger: logger.Default.LogMode(logger.Info),
 	})
 
@@ -28,6 +31,7 @@ func main() {
 	}
 
 	// db.AutoMigrate(&model.Student{})
+	// db.AutoMigrate(&model.Menu{})
 
 	// One
 	// one.InsertOne(db)
@@ -38,5 +42,8 @@ func main() {
 	// advanced.InitData(db)
 	// advanced.Query(db)
 	// advanced.Select(db)
-	advanced.Other(db)
+	// advanced.Other(db)
+	relations.CreateChildren(db)
+	// relations.QueryChildren(db)
+	// relations.QueryParent(db)
 }

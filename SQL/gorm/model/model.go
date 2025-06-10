@@ -1,6 +1,8 @@
 package model
 
-import "time"
+import (
+	"time"
+)
 
 /*
 CREATE TABLE `student` (
@@ -24,4 +26,11 @@ type Student struct {
 
 func (*Student) TableName() string {
 	return "student"
+}
+
+type Menu struct {
+	ID       int `gorm:"primaryKey"`
+	Name     string
+	ParentID *int
+	Children []*Menu `gorm:"foreignKey:ParentID;references:ID"`
 }
