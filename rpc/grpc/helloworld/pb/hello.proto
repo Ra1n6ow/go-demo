@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+// 指定当前文件的包名
+package pb;
+
+// 指定其它go文件引入时，使用的包名
+option go_package = "github.com/ra1n6ow/go-demo/rpc/grpc/helloworld/pb";
+
+service Greeter {
+    rpc SayHello(HelloRequest) returns (HelloResponse);
+    rpc UnarySayHello(HelloRequest) returns (HelloResponse);
+    // 双向流式 RPC
+    rpc BidiHello(stream HelloRequest) returns (stream HelloResponse);
+}
+
+message HelloRequest {
+    string name = 1;
+}
+
+message HelloResponse {
+    string reply = 1;
+}
